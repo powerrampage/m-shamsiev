@@ -1,0 +1,32 @@
+[
+	{
+		"heading": "Scientific Information Center \"New Technologies\"",
+		"subheading": "Frontend Developer",
+		"date": "June 2022 - currently",
+		"imagePath": "/src/assets/yt.svg",
+		"altText": "Logo yt.uz",
+		"items": [
+			"Experience working with JWT tokens",
+			"Using Swagger in the API integration process to improve the structuring and understanding of the interaction",
+			"Collaborated with Backend and DevOps developers to create high-quality products",
+			"Developed projects with clear typing using TypeScript and Zod.",
+			"Experience working in a team environment where both object-oriented (OOP) and functional (FP) approaches to development were used",
+			"Developed their own components using the Atomic Design methodology to provide a simpler and more flexible design structure",
+			"Experience in module-level testing and integration (Jest, Vitest)",
+			"Web applications for administration and customer service"
+		]
+	},
+	{
+		"heading": "Freelancer Online",
+		"subheading": "The layout designer",
+		"date": "August 2021 — May 2022",
+		"imagePath": "/src/assets/freelancer.svg",
+		"altText": "Freelancer logo",
+		"items": [
+			"Experience working with various assemblers, including Gulp, Webpack, Vite and other systems for effective automation of tasks in the development process",
+			"Improved web pages with SEO/Accessibility in mind, increased productivity and provided cross-browser compatibility by using a variety of optimization tools, including Lighthouse, PageSpeed Insights and GTmetrix.",
+			"Developed responsive layouts that ensure optimal display and user experience on various devices",
+			"Implemented the principles of SOLID, KISS, DRY and YAGNI in development, ensuring stability, simplicity and lack of redundancy in the project code"
+		]
+	}
+]

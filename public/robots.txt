@@ -1,0 +1,11 @@
+# Allow all web crawlers full access to the site
+User-agent: *
+Allow: /
+
+# Disallow access to any private or sensitive directories (if any exist)
+Disallow: /admin/
+Disallow: /login/
+Disallow: /settings/
+
+# Specify the location of your sitemap (if available)
+# Sitemap: https://www.your-portfolio.com/sitemap.xml
