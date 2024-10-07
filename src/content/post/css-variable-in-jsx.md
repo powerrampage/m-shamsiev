@@ -17,6 +17,7 @@ function Card({ title, description, color = 'blue' }: CardProps) {
 		<div className='card' style={{ '--cardColor': color } as CSSProperties}>
 			<h3 className='card-title'>{title}</h3>
 			<p>{description}</p>
+			<button className='card-btn'>Submit</button>
 		</div>
 	)
 }
@@ -37,6 +38,10 @@ Card.scss
 		color: var(--cardColor);
 		margin-bottom: 8px;
 	}
+
+  &-btn {
+    background: var(--cardColor);
+  }
 }
 ```
 
