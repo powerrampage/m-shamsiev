@@ -59,6 +59,7 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/invuln.png', Astro.u
 }
 
 {/* Twitter */}
+<meta name="twitter:image" content={socialImageURL}>
 <meta content='summary_large_image' property='twitter:card' />
 <meta content={canonicalURL} property='twitter:url' />
 <meta content={title} property='twitter:title' />
