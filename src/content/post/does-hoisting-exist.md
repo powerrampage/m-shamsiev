@@ -3,7 +3,6 @@ title: 'Javascript-da hoisting mavjudmi?'
 description: "Hoisting jargonining paydo bo'lish sabablari va uning haqiqatga qanchalik yaqinligi, aslida qanday ishlashi va nega bu termin ko'p dasturchilar orasida tarqalgani bo'yicha."
 publishDate: '27 July 2024'
 tags: ['javascript', 'hoisting', 'ecmascript', 'specification', 'jargon', 'uzbek']
-draft: true
 ---
 
 ## Hoisting Nima ?
