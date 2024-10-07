@@ -1,0 +1,9 @@
+[
+	{
+		"href": "https://www.google.com",
+		"heading": "Consectetur",
+		"subheading": "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+		"imagePath": "/src/assets/coming-soon.png",
+		"altText": "Example"
+	}
+]
