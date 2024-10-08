@@ -2,12 +2,13 @@
 title: 'Javascript-da hoisting mavjudmi?'
 description: "Hoisting jargonining paydo bo'lish sabablari va uning haqiqatga qanchalik yaqinligi, aslida qanday ishlashi va nega bu termin ko'p dasturchilar orasida tarqalgani bo'yicha."
 publishDate: '27 July 2024'
-tags: ['javascript', 'hoisting', 'ecmascript', 'specification', 'jargon', 'uzbek']
+tags:
+  ['javascript', 'hoisting', 'ecmascript', 'specification', 'jargon', 'uzbek', 'execution context']
 ---
 
 ## Hoisting Nima ?
 
-Hoisting - qaysidir manbalarga ko'ra: ko'tarish, o'zgaruvchilar(var, let, const), funksiyalar, class'lar...ni biz e'lon qilmasimizdan oldin ishlata olish.
+Hoisting - qaysidir manbalarga ko'ra: ko'tarish, o'zgaruvchilar(var, let, const), funksiyalar, class'lar...ni biz e'lon qilmasimizdan oldin tepaga ko'tarish va ishalatish.
 WTF? magic 👀
 
 ## Specification'ga Muvofiq Hoisting
@@ -24,7 +25,7 @@ _Jargon (fransuzcha: jargon safsata) — biror ijtimoiy guruhning oʻziga xos le
 [wikipedia](https://uz.wikipedia.org/wiki/Jargon).
 Ya'ni odamlar tomonidan o'ylab topilgan va haqiqatga yaqin bo'lmagan termin. [Mif](https://uz.wikipedia.org/wiki/Mif) desa ham bo'ladi.
 
-## Tahlil qilamiz
+## Tahlil Qilamiz
 
 ```js
 function foo() {
@@ -60,7 +61,7 @@ function foo() {
 `foo` chaqirilmasa bu kod error bermaydi. Oops! really ? `foo`ni ichida constant'ni o'zgartirsam ham, yaratilmagan variable'larni ishlatsam ham xato bermayapti.
 Nega bunday ? Bu savollarga javob topish uchun, oxiri specification'ga murojaat qilishga to'g'ri keladi (haqiqat manbasi :D).
 
-### Aslida Javascript 3 fazali:
+### Aslida Javascript 3 Fazali:
 
 1. Static Semantics
 2. Runtime Semantics
@@ -140,3 +141,97 @@ Execution Context fazalari:
 
 Sodda tilda:
 Agar function call qilinsa, **Execution context** create bo'lib, **Execution Context Stack** (Call Stack) ga push bo'ladi. Har bir execution contextni o'zining component'lari mavjud. Bulardan (**Realm**, **LexicalEnvironment**, **VariableEnvironment**, ...)
+
+- **Realm** - bizning kodimiz ishlaydigan izolyatsiya qilingan muhit, masalan, brauzerlarda yangi tab ochilganda yangi realm yaratiladi.
+
+- **LexicalEnvironment** - **var** o'zgaruvchilardan `tashqari` hamma narsa uchun bog'lanishlarni o'z ichiga olgan muhitdir (`let`, `const`, `functions`, ...).
+
+- **VariableEnvironment** - faqat **var** bilan e'lon qilingan o'zgaruvchilar uchun bog'lanishlarni saqlaydigan muhitdir (only `var`).
+
+**LexicalEnvironment** va **VariableEnvironment** o'zining **EnvironmentRecord** mavjud.
+[**EnvironmentRecord**](https://tc39.es/ecma262/#sec-environment-records) - bu ECMAScript kodining lexical nesting structure'ga asoslangan identifikatorlarning ma'lum o'zgaruvchilar va functionlar bilan bog'lanishini aniqlash uchun ishlatiladigan specification turi. Odatda **Environment Record** _FunctionDeclaration_, _BlockStatement_ yoki _TryStatementning Catch_ bandi kabi ECMAScript kodining o‘ziga xos syntax tuzilishi bilan bog‘lanadi. Har safar bunday kod baholanganda, ushbu kod tomonidan yaratilgan identifikator bog'lanishlarini yozish uchun yangi **Environment Record** yaratiladi.
+
+Environment Record subclasses:
+
+- [Declarative Environment Record](https://tc39.es/ecma262/#sec-declarative-environment-records)
+
+- [Object Environment Record](https://tc39.es/ecma262/#sec-object-environment-records)
+
+- [Global Environment Record](https://tc39.es/ecma262/#sec-global-environment-records)
+
+Example:
+
+```js
+var foo = 123
+let baz = 'Hello, Saturn!'
+
+function qwx(msg) {
+	return msg + foo
+}
+
+qwx(baz)
+```
+
+Visualize:
+
+```yml
+GlobalExecutionContext = {
+  LexicalEnvironment: {
+    EnvironmentRecord: {
+      DeclarativeEnvironmentRecord: {
+        baz: <uninitialized>,
+        qwx: < function qwx(msg) {
+          return msg + foo;
+        } >,
+      }, // (let, const, function, ...) bilan e'lon qilinganlar joylashadi.
+      ObjectEnvironmentRecord: {
+        window: <ref. to Global obj.>,
+        this: <ref. to window obj.>,
+      },
+      OuterEnv : <null>, // ref. ota (env. record.) (bu erda null, chunki global execution bo'lgani uchun, ota execution context mavjud emas)
+    },
+  },
+  VariableEnvironment: {
+    EnvironmentRecord: {
+      DeclarativeEnvironmentRecord: {
+        foo: undefined,
+      }, // tepada aytilganidek bu muhit (`var`) uchun.
+    },
+  },
+}
+```
+
+Yuqoridagi kod parchasi yordamida `Creation phase`:
+
+1. JS engine creation bosqichga kiradi.
+2. `window object` uchun `Global object` uchun bindinglarni yaratadi.
+3. **VariableEnvironment**ga `foo` identifikatorini yaratadi va uni `undefined` qiymat bilan initialize qiladi.
+4. **LexicalEnvironment**ga `baz` identifikatorini yaratadi va uni `<uninitialized>` qilib qoyadi (initialized bo'lmaydi).
+5. **LexicalEnvironment**ga `qwx` identifikatorini yaratadi va function declaration linkni store qiladi.
+6. **Global Execution Context** uchun `Creation Phase` tugaydi va `Execution Phase` boshlanadi.
+7. `qwx` chaqiriladi. Yangi `Execution Context` create bo'lib `Execution Context Stack` (call stack)ga push bo'ladi.
+   - Yangi `Execution Context` yaratilsa, va shu uchun `Creation Phase` boshlanadi.
+   - **LexicalEnvironment**ga `msg` paramter joylashadi va `Creation Phase` tugaydi va `Execution Phase` boshlanadi.
+   - `msg + foo` amal bajariladi. `foo` variable `qwx` *function execution context*da mavjud emasligi sababi, **[[OuterEnv]]** dan qidirishni boshlaydi, ya'ni tashqi environment'dan `foo` variable'ni qidiradi, shuyerni _"scope chain"_ deyishadi. Closure'lar ham shu **[[OuterEnv]]** orqali variable'larga access qiladi.
+   - Javob return bo'ladi. `Execution Phase` tugaydi. `qwx` execution context *call stack*dan pop bo'ladi.
+8. **Execution Context Stack** (call stack) empty bo'lib qoladi.
+
+Xulosa:
+**Variable**lar va **Function**lar qanday qaysi paytda qayerga reference'i saqlashini ko'rib chiqdik. Agar chuqurroq bilishni xohlasayiz, [specification](https://tc39.es/ecma262)ni o'qib chiqishni maslahat beraman, asl javascript ishlashini bilish uchun (men ham to'liq o'qimapman hali).
+
+## Hoisting jargonining paydo bo'lish sabablari va bu termin ko'p dasturchilar orasida tarqalgani
+
+Aniq fatklar mavud emas. Aytishlaricha: tilni to'liq o'rganmasdan, ichiga deep kirmasdan yokida ecmascript specificationi to'liq o'rganib chiqmasdan. Ba'zi bir doc, book, blog va tutorial yozuvchilar masalan ([_learn.javscript.ru_](https://learn.javascript.ru/), [_javascript.info_](https://javascript.info/), _JavaScript books: The Good Parts_, _The Definitive Guide_, ...), o'zilari 100% aniqlik kiritmasdan. O'zlaricha "JS shunaqa ishlar ekanda" dep o'zlari tasavvur qiladigan holatda "nom" o'ylab topishgan. Aniq emas bu terminlar qaysi resource'dan tarqalib ketgan. Lekin shu "o'ylab topilgan terminlar" ecma standarda yoqligi sababli jargon hisoblanadi.
+
+#### Lekin hamma shu jargonni ishlatsa nimasi yomon?
+
+Birinchi o'rinda **Narrow Mental Model**ni yaratadi. Hoisting juda ko'p ishonish tushunishni cheklashi mumkin. Agar developer'lar faqat "hoisting" nuqtai nazaridan o'ylashsa, ular JavaScript-ning boshqa muhim jihatlarini, masalan, "closure ishlashi" yoki "declaration vaqti" va "initialization vaqti" o'rtasidagi farqni o'tkazib yuborishlari mumkin.
+Bu jargon so'z haqiqatga yaqin ham emas. Endi tilni o'rganadigan dasturchilar qiynaladi bu terminlarni tushunishga.
+
+Qisqacha aytganda, bu termin "noto'g'ri" emas, lekin unga haddan tashqari ishonish JavaScript-ni execution modelini yanada "nuanced" tushunishni cheklashi mumkin.
+
+<Image 
+  src="/images/posts/does-hoisting-exist/stick-term-hoisting.png"
+  alt='Why Did the Term Stick?'
+  loading='lazy'
+/>
