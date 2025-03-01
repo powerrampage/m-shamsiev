@@ -25,7 +25,7 @@ ECMAScript bu standart. ECMAScript JavaScript specification'dir, har qanday java
 
 `Har bir engine standartga bo‘ysunadi. Specification'da yozilgan barcha narsalar yagona manba va haqiqatdir`
 
-[ECMAScript specification](https://tc39.es/ecma262/)'da **hoisting** termin mavjud emas, boshqa ecma specification version'larda ham bo'lmagan. Faqat **HoistableDeclaration** bor, lekin bu umman hoistinga aloqador emas. [**HoistableDeclaration**](https://tc39.es/ecma262/multipage/ecmascript-language-statements-and-declarations.html#prod-HoistableDeclaration) - bu qayta ishlanishi mumkin bo'lgan funksiya va generator deklaratsiyasini o'z ichiga olgan deklaratsiya toifasi.
+[ECMAScript specification](https://tc39.es/ecma262/)'da **hoisting** termin mavjud emas, boshqa ecma specification version'larda ham bo'lmagan. Faqat **HoistableDeclaration** bor, lekin bu function'larga aloqador. [**HoistableDeclaration**](https://tc39.es/ecma262/multipage/ecmascript-language-statements-and-declarations.html#prod-HoistableDeclaration) - bu qayta ishlanishi mumkin bo'lgan funksiya va generator deklaratsiyasini o'z ichiga olgan deklaratsiya toifasi.
 
 Demak **hoisting**ni **jargon** desak ham bo'ladi. Jargon nima ?
 
@@ -54,7 +54,7 @@ function foo() {
 }
 ```
 
-Ushbu kod-da, `foo` funksiya ichida 2-ta variable `let` bilan e'lon qilingan. `foo` funksiya chaqirilmagan bo'lsa ham, bu kod error beradi. Hali variable'larni e'lon qilmasdan, hoisting'ga uchramasdan. Nimaga error beradi ? Hamma jim... 🗿 Hop bunga nima deysiz:
+Ushbu kod-da, `foo` funksiya ichida 2-ta variable `let` bilan e'lon qilingan. `foo` funksiya chaqirilmagan bo'lsa ham, bu kod error beradi. Hali variable'larni e'lon qilmasdan, hoisting'ga uchramasdan. Nimaga error beradi 🗿 ? Hop bunga nima deysiz:
 
 ```js
 function foo() {
