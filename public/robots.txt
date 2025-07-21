@@ -8,4 +8,4 @@ Disallow: /login/
 Disallow: /settings/
 
 # Specify the location of your sitemap (if available)
-# Sitemap: https://www.your-portfolio.com/sitemap.xml
+# Sitemap: https://www.m-sh.dev/sitemap-index.xml
