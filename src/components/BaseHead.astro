@@ -13,7 +13,7 @@ const { articleDate, description, ogImage, title } = Astro.props
 const titleSeparator = '•'
 const siteTitle = `${title} ${titleSeparator} ${siteConfig.title}`
 const canonicalURL = new URL(Astro.url.pathname, Astro.site)
-const socialImageURL = new URL(ogImage ? ogImage : '/images/invuln.png', Astro.url).href
+const socialImageURL = new URL(ogImage ? ogImage : '/images/photo.webp', Astro.url).href
 ---
 
 <meta charset='utf-8' />
@@ -59,7 +59,7 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/invuln.png', Astro.u
 }
 
 {/* Twitter */}
-<meta name="twitter:image" content={socialImageURL}>
+<meta name='twitter:image' content={socialImageURL} />
 <meta content='summary_large_image' property='twitter:card' />
 <meta content={canonicalURL} property='twitter:url' />
 <meta content={title} property='twitter:title' />
@@ -73,3 +73,13 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/invuln.png', Astro.u
 <link href='/rss.xml' rel='alternate' title={siteConfig.title} type='application/rss+xml' />
 
 <meta content={Astro.generator} name='generator' />
+
+{/* Font */}
+<link
+	rel='preload'
+	href='/fonts/Satoshi-Variable.woff2'
+	as='font'
+	type='font/woff2'
+	crossorigin='anonymous'
+/>
+

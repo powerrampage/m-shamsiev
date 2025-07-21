@@ -9,7 +9,7 @@ tags: ['javascript', 'v8', 'primitive value', 'uzbek']
 
 ### Hammaga mashhur bo'lgan javascript.info
 
-[<Image 
+[<Picture 
   src="/images/posts/actual-primitive-values/javascript-info.png"
   alt='Javascript.info primitive qiymatlar haqida'
   loading='lazy'
@@ -124,7 +124,7 @@ name = 0x011e00098f01 // 1 reference String<[6]>
 
 ### Devtools Memory
 
-<Image 
+<Image
   src="/images/posts/actual-primitive-values/demo-2.png"
   alt='demo 2'
   loading='lazy'
@@ -176,7 +176,6 @@ for (let i = 0.1; i < 1000.1; ++i) {
 	// sekin 🐌 (SMI bo'lmagani uchun, har bittasi uchun reference yartiladi)
 }
 ```
-
 
 [<Image 
   src="/images/posts/actual-primitive-values/v8-smi-vs-heapnumber.png"

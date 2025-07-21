@@ -5,9 +5,6 @@ import Card from '../components/Card.astro'
 import ProjectCard from '../components/ProjectCard.astro'
 import Label from '../components/Label.astro'
 import SkillLayout from '../components/SkillLayout.astro'
-
-import { Image } from 'astro:assets'
-import ava from '../assets/ava.png'
 import experiences from '../data/experiences.json'
 import projects from '../data/projects.json'
 
@@ -66,18 +63,22 @@ const others = [
 	'Firebase'
 ]
 
-const EXPERIENCE_YEAR = new Date().getFullYear() - 2021
+const EXPERIENCE_YEAR = new Date().getFullYear() - 2022
 ---
 
 <PageLayout meta={{ title: 'Home' }}>
 	<div class='flex w-full flex-auto flex-col gap-y-10'>
 		<section class='flex flex-col items-center gap-y-7'>
-			<Image
-				src={ava}
+			<img
+				src='/images/photo-224.avif'
+				srcset='/images/photo-112.avif 1x, /images/photo-224.avif 2x, /images/photo-336.avif 3x'
+				sizes='112px'
 				alt='Profile avatar'
-				class='h-28 w-auto rounded-full'
+				class='h-28 w-auto rounded-full bg-gray-200'
 				fetchpriority='high'
 				loading='eager'
+				width='112'
+				height='112'
 			/>
 
 			<div class='flex flex-col items-center gap-y-4'>
