@@ -3,6 +3,7 @@ title: 'Primitive Qiymatlarning Asl Ko’rinishi'
 description: 'Aksariyat dasturchilar primitive qiymatlar, qiymati bo’yicha ko’chiriladi deb o’ylashadi, ammo bu mutlaqo to’g’ri emas. Ushbu maqolada JavaScript aslida qanday qilib xotirada primitive qiymatlarni saqlashi va ularga reference qilishiga bag’ishlangan'
 publishDate: '30 March 2025'
 tags: ['javascript', 'v8', 'primitive value', 'uzbek']
+language: "uz-UZ"
 ---
 
 ## Ba'zi manbalardagi tavsiflar va Misconceptionlar

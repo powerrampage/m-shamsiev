@@ -3,6 +3,7 @@ title: 'Creating a Dynamic Component with CSS Variables in React'
 description: 'In this post, we’ll build a reusable Card component in React that uses CSS variables for customizable styles. Learn how to easily pass colors as props, enhancing both flexibility and maintainability in your UI design'
 publishDate: '04 June 2024'
 tags: ['react', 'css variables', 'tips', 'english']
+language: "en-US"
 ---
 
 ## Creating a Dynamic Component with CSS Variables in React

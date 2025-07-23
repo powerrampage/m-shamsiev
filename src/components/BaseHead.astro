@@ -22,11 +22,10 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/photo.webp', Astro.u
 <title>{siteTitle}</title>
 
 {/* Icons / Favicon */}
-<link rel='icon' type='image/png' href='/favicon/favicon-48x48.png' sizes='48x48' />
+<link rel='icon' type='image/png' href='/favicon/favicon-96x96.png' sizes='96x96' />
 <link rel='icon' type='image/svg+xml' href='/favicon/favicon.svg' />
-<link rel='shortcut icon' href='/favicon/favicon.ico' />
+<link rel='icon' href='/favicon/favicon.ico' />
 <link rel='apple-touch-icon' sizes='180x180' href='/favicon/apple-touch-icon.png' />
-<meta name='apple-mobile-web-app-title' content='m.shamsiev' />
 <link rel='manifest' href='/favicon/site.webmanifest' />
 
 {/* Canonical URL */}
@@ -36,6 +35,11 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/photo.webp', Astro.u
 <meta content={siteTitle} name='title' />
 <meta content={description} name='description' />
 <meta content={siteConfig.author} name='author' />
+<meta
+	name='keywords'
+	content='JavaScript, Frontend Developer, Mironshokh Shamsiev, Specification, v8, Execution Context, Astro'
+/>
+<meta name='robots' content='index, follow' />
 
 {/* Theme Colour */}
 <meta content='' name='theme-color' />
@@ -82,3 +86,36 @@ const socialImageURL = new URL(ogImage ? ogImage : '/images/photo.webp', Astro.u
 	type='font/woff2'
 	crossorigin='anonymous'
 />
+
+{/* Structured Data */}
+<script is:inline type='application/ld+json'>
+	{
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		"url": "https://www.m-sh.dev",
+		"name": "Mironshokh Shamsiev",
+		"description": "Personal portfolio and blog of Mironshokh Shamsiev, a frontend developer specializing in high-performance web apps.",
+		"publisher": {
+			"@type": "Person",
+			"name": "Mironshokh Shamsiev",
+			"url": "https://www.m-sh.dev",
+			"image": {
+				"@type": "ImageObject",
+				"url": "https://www.m-sh.dev/images/photo.webp",
+				"width": 112,
+				"height": 112
+			},
+			"sameAs": [
+				"https://t.me/invuln",
+				"http://github.com/powerrampage",
+				"https://x.com/p0werrampage"
+			],
+			"jobTitle": "Frontend Developer",
+			"worksFor": {
+				"@type": "Organization",
+				"name": "Freelance / Open Source",
+				"url": "https://www.m-sh.dev"
+			}
+		}
+	}
+</script>

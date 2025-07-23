@@ -3,6 +3,7 @@ title: 'Conditional Rendering in React'
 description: 'In this post, learn how to use some conditional rendering in React. Simplify your JSX logic, making your code more readable and maintainable.'
 publishDate: '07 October 2024'
 tags: ['react', 'JSX', 'IIFE', 'tips', 'pojo', 'english']
+language: "en-US"
 ---
 
 ## Ternary Operator

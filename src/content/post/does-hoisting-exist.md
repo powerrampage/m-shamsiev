@@ -4,6 +4,7 @@ description: "Hoisting jargonining paydo bo'lish sabablari va uning haqiqatga qa
 publishDate: '27 July 2024'
 tags:
   ['javascript', 'hoisting', 'ecmascript', 'specification', 'jargon', 'uzbek', 'execution context']
+language: "uz-UZ"
 ---
 
 ## Anti-Disclaimer
