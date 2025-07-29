@@ -2,23 +2,19 @@
 title: 'Javascript-da hoisting mavjudmi?'
 description: "Hoisting jargonining paydo bo'lish sabablari va uning haqiqatga qanchalik yaqinligi, aslida qanday ishlashi va nega bu termin ko'p dasturchilar orasida tarqalgani bo'yicha."
 publishDate: '27 July 2024'
+updatedDate: '29 July 2025'
 tags:
   ['javascript', 'hoisting', 'ecmascript', 'specification', 'jargon', 'uzbek', 'execution context']
-language: "uz-UZ"
+language: 'uz-UZ'
+coverImage:
+  src: './cover-images/cover-image-does-hoisting-exist.avif'
+  alt: 'Does hoisting exist cover image'
 ---
-
-## Anti-Disclaimer
-
-Bu blog 100% tayyormisiz yoki tayyor emasligingizdan qat'i nazar, _hoisting_ kabi JavaScript tushunchalarini tushunishingizga ishonch hosil qilishga intiladi. Sizni aqldan ozdiruvchi jargon bilan adashtirish yoki cheksiz specification topiclariga botish uchun bu yerda emasmiz. Buning o'rniga biz aniqlik, fun va vaqti-vaqti bilan "aha!" moment uchun.
-
-O'zingiz olgan har qanday yangi JavaScript bilimni, ayniqsa cleaner, smarter tushunishizga yordam beradigan qismlar uchun. Ha, siz _execution context_, _static semantics_, _runtime semantics_ kabi atamalarni ishonch bilan ayta boshlaysiz.
-
-Agar oxirigacha biror narsa sizga mantiqiy bo'lsa, tashvishlanmang. Bularning barchasi rejaning bir qismi.
 
 ## Hoisting Nima ?
 
 Hoisting - qaysidir manbalarga ko'ra: ko'tarish, o'zgaruvchilar(var, let, const), funksiyalar, class'lar...ni biz e'lon qilmasimizdan oldin tepaga ko'tarish va ishalatish.
-WTF? magic 👀
+magic 👀
 
 ## Specification'ga Muvofiq Hoisting
 
